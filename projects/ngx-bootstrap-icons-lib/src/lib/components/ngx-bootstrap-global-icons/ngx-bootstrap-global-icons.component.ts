@@ -1,16 +1,12 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-ngx-bootstrap-global-icons',
-  templateUrl: './ngx-bootstrap-global-icons.component.html',
-  styleUrls: ['./ngx-bootstrap-global-icons.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'bootstrap-icon',
+  template: '<ng-content></ng-content>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NgxBootstrapGlobalIconsComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
