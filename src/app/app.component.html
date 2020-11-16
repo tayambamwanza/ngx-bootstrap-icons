@@ -1,27 +1,34 @@
 <app-header></app-header>
 
 <div class="container">
+  <router-outlet></router-outlet>
 
   <div class="row">
     <div class="col-3 p-0 m-0">
       <div class="input-group mb-3">
-        <input type="text"
-               class="form-control"
-               placeholder="Search icon"
-               aria-label="Search icon"
-               aria-describedby="button-addon2"
-               (change)="onSearch()"
-               [(ngModel)]="search">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search icon"
+          aria-label="Search icon"
+          aria-describedby="button-addon2"
+          (change)="onSearch()"
+          [(ngModel)]="search"
+        />
         <div class="input-group-append">
-          <button class="btn btn-light border"
-                  [disabled]="noSearchData"
-                  (click)="onClear()"
-                  id="button-addon2">
-            <i-bs name="x"
-                  class="position-ralative"
-                  style="top:-5px !important"
-                  width="1.3rem"
-                  height="1.3rem">
+          <button
+            class="btn btn-light border"
+            [disabled]="noSearchData"
+            (click)="onClear()"
+            id="button-addon2"
+          >
+            <i-bs
+              name="x"
+              class="position-ralative"
+              style="top: -5px !important"
+              width="1.3rem"
+              height="1.3rem"
+            >
             </i-bs>
           </button>
         </div>
@@ -29,8 +36,7 @@
     </div>
 
     <div class="col-3">
-      <select class="form-control"
-              [(ngModel)]="selectedColor">
+      <select class="form-control" [(ngModel)]="selectedColor">
         <option *ngFor="let clr of colors">{{ clr }}</option>
       </select>
     </div>
@@ -38,15 +44,16 @@
 
   <div class="row">
     <div class="col-12 p-0 m-0">
-      <div class="alert alert-success text-center"
-           *ngIf="showAlert">
+      <div class="alert alert-success text-center" *ngIf="showAlert">
         <p class="p-0 m-0">
           Code copied to clipboard!
-          <i-bs name="x"
-                class="text-secondary float-right cursor-pointer"
-                width="1.3rem"
-                height="1.3rem"
-                (click)="toggleShowAlert()">
+          <i-bs
+            name="x"
+            class="text-secondary float-right cursor-pointer"
+            width="1.3rem"
+            height="1.3rem"
+            (click)="toggleShowAlert()"
+          >
           </i-bs>
         </p>
       </div>
@@ -56,36 +63,43 @@
   <div class="row">
     <ng-container *ngFor="let item of items">
       <div class="col-3 p-1">
-        <div class="p-4 border text-center icon-item"
-             [class.bg-secondary]="selectedColor === 'text-white-50'"
-             style="min-height: 120px;">
+        <div
+          class="p-4 border text-center icon-item"
+          [class.bg-secondary]="selectedColor === 'text-white-50'"
+          style="min-height: 120px"
+        >
           <!-- toggleShowCode -->
-          <i-bs name="code-slash"
-                class="position-absolute btn btn-light border"
-                style="right:8px;top:8px;"
-                width="20px"
-                height="18px"
-                (click)="onShowCode(item)"></i-bs>
+          <i-bs
+            name="code-slash"
+            class="position-absolute btn btn-light border"
+            style="right: 8px; top: 8px"
+            width="20px"
+            height="18px"
+            (click)="onShowCode(item)"
+          ></i-bs>
 
           <!-- copy to clipboard -->
-          <i-bs name="clipboard"
-                class="position-absolute btn btn-light border"
-                style="right:8px;top:52px;"
-                width="20px"
-                height="22px"
-                (click)="onCopyToClipboard(htmlCode(item))"></i-bs>
+          <i-bs
+            name="clipboard"
+            class="position-absolute btn btn-light border"
+            style="right: 8px; top: 52px"
+            width="20px"
+            height="22px"
+            (click)="onCopyToClipboard(htmlCode(item))"
+          ></i-bs>
 
           <!-- icon -->
-          <i-bs [name]="item"
-                [class]="selectedColor"
-                width="2rem"
-                height="2rem"></i-bs>
+          <i-bs
+            [name]="item"
+            [class]="selectedColor"
+            width="2rem"
+            height="2rem"
+          ></i-bs>
 
           <b class="d-block mt-2">{{ item }}</b>
 
           <!-- code -->
-          <div class="text-left border bg-light p-2 mt-2"
-               *ngIf="btnCode(item)">
+          <div class="text-left border bg-light p-2 mt-2" *ngIf="btnCode(item)">
             <pre class="text-muted">{{ htmlCode(item) }}</pre>
           </div>
         </div>
