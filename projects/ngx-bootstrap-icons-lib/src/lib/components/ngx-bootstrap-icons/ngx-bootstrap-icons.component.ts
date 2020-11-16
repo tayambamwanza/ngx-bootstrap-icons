@@ -33,11 +33,15 @@ export class NgxBootstrapIconsLibComponent implements OnChanges {
     const icons = Object.assign({}, ...((this.icons as any) as object[]));
     let svg = icons[uppercamelcase(changes.name.currentValue)] || '';
 
-    if (!svg) console.warn(`Icon not found: ${changes.name.currentValue}\n`);
-    if (this.width && svg.includes('width'))
+    if (!svg) {
+      console.warn(`Icon not found: ${changes.name.currentValue}\n`);
+    }
+    if (this.width && svg.includes('width')) {
       svg = svg.replace('width="1em"', `width="${this.width}"`);
-    if (this.height && svg.includes('height'))
+    }
+    if (this.height && svg.includes('height')) {
       svg = svg.replace('height="1em"', `height="${this.height}"`);
+    }
 
     this.elem.nativeElement.innerHTML = svg;
     this.changeDetector.markForCheck();

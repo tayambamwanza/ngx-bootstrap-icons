@@ -8,10 +8,11 @@ import { Icons } from './providers/icon.provider';
 })
 export class NgxBootstrapIconsModule {
   constructor(@Optional() private icons: Icons) {
-    if (!this.icons)
+    if (!this.icons) {
       throw new Error(
         "No icon provided. Make sure to use 'NgxBootstrapIconsModule.pick({ ... })' when importing the module\n"
       );
+    }
   }
 
   static pick(icons: {
