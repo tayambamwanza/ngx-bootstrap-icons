@@ -1,13 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FeaturedIconsComponent } from './featured-icons.component';
-
-
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { FeaturedIconsComponent } from "./featured-icons.component";
 
 @NgModule({
   declarations: [FeaturedIconsComponent],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule],
+  exports: [FeaturedIconsComponent],
 })
-export class FeaturedIconsModule { }
+export class FeaturedIconsModule {}
