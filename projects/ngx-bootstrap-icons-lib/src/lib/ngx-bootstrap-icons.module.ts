@@ -1,15 +1,14 @@
-/* eslint-disable @typescript-eslint/comma-dangle */
-/* eslint-disable quotes */
-/* eslint-disable @typescript-eslint/explicit-member-accessibility */
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import { ModuleWithProviders, NgModule } from '@angular/core';
+import { NgxBootstrapGlobalIconsComponent } from './components/ngx-bootstrap-global-icons/ngx-bootstrap-global-icons.component';
 import { NgxBootstrapIconsLibComponent } from './components/ngx-bootstrap-icons.component';
 import { Icons } from './providers/icon.provider';
 
 @NgModule({
-  declarations: [NgxBootstrapIconsLibComponent],
-  exports: [NgxBootstrapIconsLibComponent],
+  declarations: [
+    NgxBootstrapIconsLibComponent,
+    NgxBootstrapGlobalIconsComponent,
+  ],
+  exports: [NgxBootstrapIconsLibComponent, NgxBootstrapGlobalIconsComponent],
 })
 export class NgxBootstrapIconsModule {
   /*   constructor(@Optional() private icons: Icons) {
