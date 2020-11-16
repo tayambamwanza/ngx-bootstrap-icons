@@ -38,10 +38,14 @@ export class AppComponent implements OnInit {
     this.selectedColor = this.colors[0];
   }
 
-  public ngOnInit(): void { this._getItems(); }
+  public ngOnInit(): void {
+    this._getItems();
+  }
 
   public onSearch(): void {
-    if (this.search) this.items = clone(icons).filter((x) => x.includes(this.search.trim()));
+    if (this.search) {
+      this.items = clone(icons).filter((x) => x.includes(this.search.trim()));
+    }
     if (!this.search) this._getItems();
   }
 
@@ -51,14 +55,16 @@ export class AppComponent implements OnInit {
     this._getItems();
   }
 
-  public htmlCode = (item: string): string => `<i-bs
+  public htmlCode = (item: string): string =>
+    `<i-bs
   name="${item}"
   class="${this.selectedColor}"
   width="2rem"
   height="2rem">
 </i-bs>`.trim();
 
-  public btnCode = (icon: string) => this.selectedIcon && icon === this.selectedIcon && this.btnCode;
+  public btnCode = (icon: string) =>
+    this.selectedIcon && icon === this.selectedIcon && this.btnCode;
 
   public onShowCode(icon: string): void {
     this.showCode = !this.showCode;
