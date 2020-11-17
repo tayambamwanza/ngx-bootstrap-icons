@@ -2,10 +2,11 @@ import { ModuleWithProviders, NgModule, Optional } from '@angular/core';
 
 import { NgxBootstrapIconsLibComponent } from './components/ngx-bootstrap-icons/ngx-bootstrap-icons.component';
 import { Icons } from './providers/icon.provider';
+import { NgxGlobalBootstrapIconsComponent } from './components/ngx-global-bootstrap-icons/ngx-global-bootstrap-icons.component';
 
 @NgModule({
-  declarations: [NgxBootstrapIconsLibComponent],
-  exports: [NgxBootstrapIconsLibComponent],
+  declarations: [NgxBootstrapIconsLibComponent, NgxGlobalBootstrapIconsComponent],
+  exports: [NgxBootstrapIconsLibComponent, NgxGlobalBootstrapIconsComponent],
 })
 export class NgxBootstrapIconsModule {
   constructor(@Optional() private icons: Icons) {
