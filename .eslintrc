@@ -1,7 +1,6 @@
 {
   "root": true,
-  "overrides": [
-    {
+  "overrides": [{
       "files": ["*.ts"],
       "plugins": [
         "simple-import-sort",
@@ -137,7 +136,8 @@
             ]
           }
         ],
-        "simple-import-sort/sort": "error",
+        "simple-import-sort/imports": "error",
+    		"simple-import-sort/exports": "error",
         "sort-imports": "off",
         "import/first": "error",
         "import/newline-after-import": "error",
@@ -151,7 +151,7 @@
           }
         ],
         "@typescript-eslint/naming-convention": [
-          "error",
+          "warn",
           {
             "selector": "default",
             "format": [

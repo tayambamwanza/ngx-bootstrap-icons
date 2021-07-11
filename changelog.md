@@ -39,3 +39,40 @@
 ## v.1.2.2 (21.10.2020)
 
 * [icons] - fixed #47
+
+## v.1.2.3 (18.11.2020)
+
+* [icons] - fixed #57 (Added enums for icons) (thank you, @tayambamwanza for contributing)
+* [icons] - fixed #65
+* [readme] - minor Readme impovements (thank you, @tayambamwanza for contributing)
+
+## v.1.2.4 (12.12.2020)
+
+* [icons] - fixed #121 (updated Bootstrap Icons to v1.2.0 )
+
+## v.1.3.0 (13.12.2020)
+
+* [icons] - updated Bootstrap Icons to v1.2.1
+* [icons] - fixed some linter errors
+* [icons] - breaking changes - all icons now camelCase
+
+## v.1.3.1 (14.12.2020)
+
+* [breaking changes] - fixed #126
+* fixed #127
+
+## v.1.3.2 (4.01.2021)
+
+* fixed #153 - icons v1.2.2
+
+## v.1.3.3 (9.01.2021)
+
+* fixed #175 - icons v1.3.0
+## v.1.3.4 (15.01.2021)
+
+* fixed #182, #54
+
+## v.1.3.5 (02.02.2021)
+
+* fixed #222, added config options for module,
+* [breaking changes] - pick() changed forRoot()

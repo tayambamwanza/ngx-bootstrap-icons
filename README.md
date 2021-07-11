@@ -16,7 +16,7 @@
 npm i ngx-bootstrap-icons --save
 ```
 
-![Bootstrap Icons full set](https://user-images.githubusercontent.com/98681/85891337-be640680-b7a3-11ea-84a0-0a103fce118c.png)
+![Bootstrap Icons full set](https://github.com/twbs/icons/raw/main/.github/preview.png)
 
 
 ### Demo
@@ -25,39 +25,39 @@ npm i ngx-bootstrap-icons --save
 
 ### Usage
 
-_1. Install the package_
+#### _1. Install the package_
 
 ```sh
 npm i ngx-bootstrap-icons --save
 ```
-_2. Import module_
+#### _2. Import module_
 
 ```ts  
 import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 ```
 
-_3. Import assets_
+#### _3. Import assets_
 
 You can import all icons (not recomended) or each icon individually.
 
-_3.1 Import all icons_
+##### _3.1 Import all icons_
 
 ```ts
 import { allIcons } from 'ngx-bootstrap-icons';
 ```
 
-_3.2 Import some icons_
+##### _3.2 Import some icons_
 ```ts
-import { Alarm, AlarmFill, AlignBottom } from 'ngx-bootstrap-icons';
+import { alarm, alarmFill, alignBottom } from 'ngx-bootstrap-icons';
 // Select some icons (use an object, not an array)
 const icons = {
-  Alarm,
-  AlarmFill,
-  AlignBottom
+  alarm,
+  alarmFill,
+  alignBottom
 };
 ```
 
-_4. Import Module (all icons)_
+#### _4. Import Module (all icons)_
 
 ```ts
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
@@ -69,7 +69,7 @@ import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxBootstrapIconsModule.pick(allIcons)
+    NgxBootstrapIconsModule.forRoot(allIcons)
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -77,17 +77,17 @@ import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 export class AppModule { }
 
 ```
-_4.1. Import Module (some icons)_
+##### _4.1. Import Module (some icons)_
 
 ```ts
 import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
-import { Alarm, AlarmFill, AlignBottom } from 'ngx-bootstrap-icons';
+import { alarm, alarmFill, alignBottom } from 'ngx-bootstrap-icons';
 
 // Select some icons (use an object, not an array)
 const icons = {
-  Alarm,
-  AlarmFill,
-  AlignBottom
+  alarm,
+  alarmFill,
+  alignBottom
 };
 
 @NgModule({
@@ -97,18 +97,83 @@ const icons = {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxBootstrapIconsModule.pick(icons)
+    NgxBootstrapIconsModule.forRoot(icons)
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+/**
+
+Another way.
+--------------
+
+Import NgxBootstrapIconsModule.forRoot(icons) inside of the AppModule
+
+Import NgxBootstrapIconsModule (without the forRoot() method) inside of any FeatureModule where will be used.
+
+Now you can import icons in one place only (root module) and successfully use the component anywhere you want.
+
+**/
+
 ```
 
-_5. Use it in template_
+##### _4.2. Configure Module (optional)_
+
+```ts
+import { NgxBootstrapIconsModule, ColorTheme } from 'ngx-bootstrap-icons';
+import { alarm, alarmFill, alignBottom } from 'ngx-bootstrap-icons';
+
+// Select some icons (use an object, not an array)
+const icons = {
+  alarm,
+  alarmFill,
+  alignBottom
+};
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgxBootstrapIconsModule.forRoot(icons, { 
+        width: '2em', 
+        height: '2em', 
+        theme: ColorTheme.Danger,
+    })
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+```
+##### _Configure options_
+
+
+| Name of input prarameter |      Type      | Required | Default Value | Description |
+|--------------------------|----------------|----------|---------------|-------------|
+| width                    |    `string`    |  `false` |    `null`     | icon default width |
+| height                   |    `string`    |  `false` |    `null`     | icon default height |
+| theme                    |    `enum`      |  `false` |    `null`     | default color theme |
+
+
+#### _5. Use it in template_
 ```ts
 <i-bs name="alarm-fill"></i-bs>
 ```
+or optionally use our enums for autocomplete support
+```ts
+import { iconNamesEnum } from 'ngx-bootstrap-icons';
+
+public iconNames = iconNamesEnum;
+
+<i-bs [name]="iconNames.AlarmFill"></i-bs>
+```
+
 Also you can use width and height for icon (By default width and height are 1rem)
 ```ts
 <i-bs 
@@ -117,3 +182,12 @@ Also you can use width and height for icon (By default width and height are 1rem
   height="2rem">
 </i-bs>
 ```
+#### _6. Input parameters_
+
+
+| Name of input prarameter |      Type      | Required | Default Value | Description |
+|--------------------------|----------------|----------|---------------|-------------|
+| name                     | `string`       |  `true`  |    `null`     | name of the icon|
+| width                    | `string`       |  `false` |    `null`     | width of the icon. Default value used from svg |
+| height                   | `string`       |  `false` |    `null`     | height of the icon. Default value used from svg |
+| resetDefaultDimensions   | `boolean`      |  `false` |    `false`    | if this parameter is set, default dimensions of the svg icon will be removed |

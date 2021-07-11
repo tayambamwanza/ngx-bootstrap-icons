@@ -1,26 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { clone } from 'lodash';
 import { ClipboardService } from 'ngx-clipboard';
-import { IconNamesEnum } from 'projects/ngx-bootstrap-icons-lib/src/public-api';
-import { icons } from './icons';
-
+import { IconNamesEnum } from 'projects/ngx-bootstrap-icons-lib/src/lib/enums/icon-names.enum';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-
-  public IconNames = IconNamesEnum;
-
-  public items = icons;
+  public items: string[] = [];
 
   public search: string;
 
   public showCode = false;
 
   public selectedIcon: string;
-
-  public selectedColor: string;
 
   public colors: string[] = [
     'text-primary',
@@ -36,16 +30,20 @@ export class AppComponent implements OnInit {
     'text-white-50',
   ];
 
+  public selectedColor = this.colors[0];
+
   public showAlert = false;
 
-  constructor(private _clipboardService: ClipboardService) {
-    this.selectedColor = this.colors[0];
+  public allIcons = Object.values(IconNamesEnum);
+
+  constructor(private _clipboardService: ClipboardService) { }
+
+  public ngOnInit(): void {
+    this._getItems();
   }
 
-  public ngOnInit(): void { this._getItems(); }
-
   public onSearch(): void {
-    if (this.search) this.items = clone(icons).filter((x) => x.includes(this.search.trim()));
+    if (this.search) this.items = clone(this.allIcons).filter((x) => x.includes(this.search.trim()));
     if (!this.search) this._getItems();
   }
 
@@ -62,6 +60,7 @@ export class AppComponent implements OnInit {
   height="2rem">
 </i-bs>`.trim();
 
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   public btnCode = (icon: string) => this.selectedIcon && icon === this.selectedIcon && this.btnCode;
 
   public onShowCode(icon: string): void {
@@ -86,6 +85,6 @@ export class AppComponent implements OnInit {
   }
 
   private _getItems(): void {
-    this.items = clone(icons);
+    this.items = clone(this.allIcons);
   }
 }

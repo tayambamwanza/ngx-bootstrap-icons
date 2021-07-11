@@ -5,6 +5,8 @@
     "target": "es2015",
     "declaration": true,
     "inlineSources": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "types": [],
     "lib": [
       "dom",
@@ -14,6 +16,7 @@
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,
     "skipTemplateCodegen": true,
+    "disableTypeScriptVersionCheck": true,
     "strictMetadataEmit": true,
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true,
