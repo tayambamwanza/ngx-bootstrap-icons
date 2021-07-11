@@ -1,10 +1,11 @@
 import {
-  ChangeDetectorRef, Component, ElementRef, Inject, Input, OnChanges, SimpleChanges,
+  ChangeDetectorRef, Component, ElementRef, Inject, Input, OnChanges, SimpleChanges
 } from '@angular/core';
-import { IconNamesEnum } from '../../utils/icon-names.enum';
-
 import { Icons } from '../../providers/icon.provider';
+import { IconName } from '../../utils/icon-name.type';
+import { IconNamesEnum } from '../../utils/icon-names.enum';
 import { uppercamelcase } from '../../utils/utils';
+
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -12,7 +13,7 @@ import { uppercamelcase } from '../../utils/utils';
   template: '<ng-content></ng-content>',
 })
 export class NgxBootstrapIconsLibComponent implements OnChanges {
-  @Input() name!: string | IconNamesEnum;
+  @Input() name!: IconName | IconNamesEnum;
 
   @Input() width!: string;
 
